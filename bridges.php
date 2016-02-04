@@ -16,13 +16,17 @@ class Bridges
 
         self::calcMaxBridges(count(self::$north) - 1, count(self::$south) - 1);
 
-        echo self::$maxBridges[count(self::$north)-1] [count(self::$south)-1];
+        echo self::$maxBridges[count(self::$north) - 1] [count(self::$south) - 1];
     }
 
     private static function calcMaxBridges($x, $y)
     {
         if ($x < 0 || $y < 0) {
             return 0;
+        }
+
+        if (isset(self::$maxBridges[$x][$y])) {
+            return self::$maxBridges[$x][$y];
         }
 
         $northLeft = self::calcMaxBridges($x - 1, $y);
